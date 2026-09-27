@@ -1,0 +1,28 @@
+{
+    "app_metadata": {
+        "name": "FileMint",
+        "version": "v15.0 (Build 15.0.10 | Release v15.0.2)",
+        "license": "MIT Open Source License",
+        "copyright": "\u00a9 2026 FileMint Development Team",
+        "website": "https://github.com/encloudme",
+        "feedback": "https://github.com/encloudme/FileMint/issues",
+        "contact": "filemint.help@proton.me",
+        "icon_filename": "filemint.png",
+        "window_title": "FileMint - File Consolidation & Archiving Engine"
+    },
+    "directories": {
+        "HOME": "~",
+        "DESKTOP_DIR": "{HOME}/Desktop",
+        "DESKTOP_APPS_DIR": "{HOME}/.local/share/applications",
+        "ICON_DIR": "{HOME}/.local/share/icons",
+        "DOCUMENTS_DIR": "{HOME}/Documents",
+        "APPDATA_DIR": "{HOME}/.config/filemint-app",
+        "APP_INSTALL_DIR": "{HOME}/.local/share/filemint-app",
+        "DEFAULT_OUTPUT_DIR": "{HOME}/Documents/FileMint/Output",
+        "DEFAULT_ARCHIVE_DIR": "{HOME}/Documents/FileMint/Archive"
+    },
+    "rules": {
+        "strict_pattern": "^(combined|merged|merge)_([^\\s]+?)_[vV](\\d+(?:\\.\\d+){1,3})\\.txt$",
+        "default_theme": "light"
+    }
+}

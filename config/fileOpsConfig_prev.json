@@ -1,0 +1,23 @@
+{
+    "source_folders": [
+        "{HOME}/Documents/FileMint/Source"
+    ],
+    "output_directory": "{HOME}/Documents/FileMint/Output",
+    "archive_directory": "{HOME}/Documents/FileMint/Archive",
+    "excluded_items": [
+        ["file", "{HOME}/Documents/FileMint/Source/file_to_exclude.txt"],
+        ["folder", "{HOME}/Documents/FileMint/Output"],
+        ["folder", "{HOME}/Documents/FileMint/Archive"]
+    ],
+    "excluded_patterns": [
+        "__tests__", ".log", "secret_key.py",
+        "__init__.py", ".mp3", ".m4a",
+        ".mov", ".mp4", ".jpg",
+        ".jpeg", ".png", ".pdf",
+        ".zip", ".rar", ".tgz"
+    ],
+    "selected_extensions": {},
+    "recursive_search": true,
+    "selected_theme": "light",
+    "output_filename_pattern": "combined_source_code_v1.0.txt"
+}

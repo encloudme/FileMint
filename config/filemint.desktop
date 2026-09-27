@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FileMint
+Comment=File Consolidation and Archiving Engine
+Exec=python3 USER_HOME/.local/share/filemint-app/src/filemint.py
+Path=USER_HOME/.local/share/filemint-app
+Icon=USER_HOME/.local/share/filemint-app/icons/filemint.png
+Terminal=false
+Categories=Utility;Development;
+StartupNotify=true
+StartupWMClass=FileMint
+Keywords=filemint;merge;combine;archive;consolidate;version;

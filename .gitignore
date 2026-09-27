@@ -1,0 +1,72 @@
+# ==============================================================================
+# 🚀 FileMint Public & Main Repository .gitignore
+# Filters Python Caches, Virtual Environments, OS Metadata, & Build Buffers
+# ==============================================================================
+
+# --- Archive folder ---
+archive/
+
+# --- Python & Bytecode Caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.pyc
+
+# --- Environments & Virtual Environments ---
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# --- Build, Temporary Buffers & Compilation Outputs ---
+build/
+dist/
+*.egg-info/
+.eggs/
+*.spec
+src_copy/
+assets/src_copy/
+assets/logs/
+assets/screenshots/windows/
+
+# --- Temporary Executables & Object Files ---
+*.o
+*.obj
+*.bin
+*.out
+
+# --- OS Metadata & System Files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*$*
+
+# --- IDEs & Code Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# --- Runtime Generated Logs & Local User Config Overrides ---
+*.log
+Output/
+Archive/
+source_code_archive/
+combined_*
+merged_*
+merge_*
+installers/do_not_delete.txt
+env_details.txt
+
+# --- Release Archives Policy ---
+# Ignore temporary local build bundles if attached to GitHub Releases
+releases/
+
