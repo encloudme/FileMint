@@ -6,13 +6,14 @@
   <br/><br/>
 
   <!-- Badges -->
-  <a href="https://github.com"><img src="https://img.shields.io/badge/Version-v15.0-00E5FF?style=for-the-badge&logo=github" alt="Version"></a>
-  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
-  <a href="https://www.gnu.org/licenses/"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-blue?style=for-the-badge&logo=linux" alt="Platform"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero-brightgreen?style=for-the-badge" alt="Zero Dependencies"></a>
+  <a href="https://github.com"><img src="https://img.shields.io/badge/Version-v15.0-00E5FF?style=plastic&logo=github" alt="Version"></a>
+  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.12-3776AB?style=plastic&logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://www.gnu.org/licenses/"><img src="https://img.shields.io/badge/License-MIT-green?style=plastic" alt="License"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-blue?style=plastic&logo=linux" alt="Platform"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero-brightgreen?style=plastic" alt="Zero Dependencies"></a>
 
-  <br/><br/>
+ <br/><br/>
+  [![Release Link](https://img.shields.io/github/v/release/encloudme/FileMint?label=RELEASE%20LINK&style=plastic&logo=github&color=2E7D32)](https://github.com/encloudme/FileMint/releases/latest)
 
   <h3>⚡ Zero-Dependency Data Sanitization & Codebase Archiving Engine</h3>
   <p>A high-performance desktop utility for offline file consolidation, metadata cleaning, versioning enforcement, and automated archiving.</p>
@@ -22,7 +23,8 @@
 **[Visual Showcase](#visual-showcase)** |
 **[Key Features](#key-features)** |
 **[Architecture](#architecture)** |
-**[Downloads](#downloads-releases)** 
+**[Downloads](#downloads-releases)**
+
 
 </div>
 <a id="top-header"></a>
