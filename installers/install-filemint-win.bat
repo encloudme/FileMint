@@ -1,7 +1,10 @@
 @echo off
-chcp 65001 >nul
 setlocal enabledelayedexpansion
+
 title FileMint - Windows Desktop Installer
+
+:: 0. Silence benign UTF-8 menu loading warnings on minimal Windows OS
+chcp 65001 >nul 2>&1
 
 echo ==================================================================
 echo             ⚙️  Installing FileMint Desktop Engine
@@ -15,8 +18,8 @@ if "%SCRIPT_DIR:~-1%"=="\" set "SCRIPT_DIR=%SCRIPT_DIR:~0,-1%"
 :: Resolve parent directory (Repository Root or Release Package Root)
 for %%I in ("%SCRIPT_DIR%\..") do set "REPO_ROOT=%%~fI"
 
-echo [*] Installer Location: %SCRIPT_DIR%
-echo [*] Repository Root:   %REPO_ROOT%
+echo [⚙️] Installer Location: %SCRIPT_DIR%
+echo [⚙️] Repository Root:   %REPO_ROOT%
 echo.
 
 :: 2. Target Directory Definitions
@@ -25,7 +28,7 @@ set "CONFIG_DIR=%APPDATA%\FileMint"
 set "DESKTOP_DIR=%USERPROFILE%\Desktop"
 set "START_MENU_DIR=%APPDATA%\Microsoft\Windows\Start Menu\Programs"
 
-echo [*] Setting up installation folder: %APP_DIR%
+echo [⚙️] Setting up installation folder: %APP_DIR%
 if not exist "%APP_DIR%" mkdir "%APP_DIR%"
 if not exist "%CONFIG_DIR%" mkdir "%CONFIG_DIR%"
 
@@ -40,7 +43,7 @@ if !ERRORLEVEL! equ 0 (
 )
 
 if defined PYTHON_CMD (
-    echo [+] Python Runtime detected:
+    echo [📌] Python Runtime detected:
     %PYTHON_CMD% --version
 ) else (
     echo [!] Python command not found in System PATH. Checking for pre-compiled binary...
@@ -48,7 +51,7 @@ if defined PYTHON_CMD (
 
 :: 4. Deploy Application Files & Configurations
 echo.
-echo [*] Deploying FileMint application files...
+echo [⚙️] Deploying FileMint application files...
 
 set "DEPLOYED_BIN=0"
 
@@ -56,44 +59,54 @@ set "DEPLOYED_BIN=0"
 for %%F in ("%REPO_ROOT%\releases\FileMint-*.exe") do (
     if exist "%%~fF" (
         copy /Y "%%~fF" "%APP_DIR%\FileMint.exe" >nul
-        echo [+] Deployed compiled executable: FileMint.exe
+        echo [📌] Deployed compiled executable: FileMint.exe
         set "DEPLOYED_BIN=1"
         goto :bin_found
     )
 )
-
 for %%F in ("%REPO_ROOT%\FileMint-*.exe") do (
     if exist "%%~fF" (
         copy /Y "%%~fF" "%APP_DIR%\FileMint.exe" >nul
-        echo [+] Deployed compiled executable from package root.
+        echo [📌] Deployed compiled executable from package root.
         set "DEPLOYED_BIN=1"
         goto :bin_found
     )
 )
-
 :bin_found
 if "!DEPLOYED_BIN!"=="0" (
     if exist "%REPO_ROOT%\filemint.py" (
         copy /Y "%REPO_ROOT%\filemint.py" "%APP_DIR%\filemint.py" >nul
         if exist "%REPO_ROOT%\core.py" copy /Y "%REPO_ROOT%\core.py" "%APP_DIR%\core.py" >nul
         if exist "%REPO_ROOT%\gui.py" copy /Y "%REPO_ROOT%\gui.py" "%APP_DIR%\gui.py" >nul
-        echo [+] Deployed Python application scripts.
+        echo [📌] Deployed Python application scripts.
     ) else (
         echo [!] Warning: Neither compiled binary nor filemint.py source found.
     )
 )
 
-
-:: Deploy configuration templates
+:: Deploy configuration templates & normalize slashes on target files
 if exist "%REPO_ROOT%\config\appConfig.json" (
     copy /Y "%REPO_ROOT%\config\appConfig.json" "%CONFIG_DIR%\appConfig.json" >nul
     copy /Y "%REPO_ROOT%\config\appConfig.json" "%APP_DIR%\appConfig.json" >nul
-    echo [+] Deployed appConfig.json configuration.
+    powershell -NoProfile -Command ^
+        "(Get-Content '%CONFIG_DIR%\appConfig.json') -replace '/', '\\' | Set-Content '%CONFIG_DIR%\appConfig.json'"
+    powershell -NoProfile -Command ^
+        "(Get-Content '%APP_DIR%\appConfig.json') -replace '/', '\\' | Set-Content '%APP_DIR%\appConfig.json'"
+    echo [⚙️] Converted path separators to backslashes in appConfig.json
+    echo [📌] Deployed appConfig.json configuration for Windows.
 )
+
 if exist "%REPO_ROOT%\config\fileOpsConfig.json" (
-    copy /Y "%REPO_ROOT%\config\fileOpsConfig.json" "%CONFIG_DIR%\fileOpsConfig.json" >nul
+    if not exist "%CONFIG_DIR%\fileOpsConfig.json" (
+        copy /Y "%REPO_ROOT%\config\fileOpsConfig.json" "%CONFIG_DIR%\fileOpsConfig.json" >nul
+        powershell -NoProfile -Command ^
+            "(Get-Content '%CONFIG_DIR%\fileOpsConfig.json') -replace '/', '\\' | Set-Content '%CONFIG_DIR%\fileOpsConfig.json'"
+    )
     copy /Y "%REPO_ROOT%\config\fileOpsConfig.json" "%APP_DIR%\fileOpsConfig.json" >nul
-    echo [+] Deployed fileOpsConfig.json configuration.
+    powershell -NoProfile -Command ^
+        "(Get-Content '%APP_DIR%\fileOpsConfig.json') -replace '/', '\\' | Set-Content '%APP_DIR%\fileOpsConfig.json'"
+    echo [⚙️] Converted path separators to backslashes in fileOpsConfig.json
+    echo [📌] Deployed fileOpsConfig.json configuration.
 )
 
 :: Deploy icon assets (.ico preferred for Windows shortcuts, .png as fallback)
@@ -101,20 +114,20 @@ set "ICON_FILE="
 if exist "%REPO_ROOT%\assets\icons\filemint.ico" (
     copy /Y "%REPO_ROOT%\assets\icons\filemint.ico" "%APP_DIR%\filemint.ico" >nul
     set "ICON_FILE=%APP_DIR%\filemint.ico"
-    echo [+] Deployed Windows icon asset: filemint.ico
+    echo [📌] Deployed Windows icon asset: filemint.ico
 ) else if exist "%REPO_ROOT%\icons\filemint.ico" (
     copy /Y "%REPO_ROOT%\icons\filemint.ico" "%APP_DIR%\filemint.ico" >nul
     set "ICON_FILE=%APP_DIR%\filemint.ico"
-    echo [+] Deployed Windows icon asset: filemint.ico
+    echo [📌] Deployed Windows icon asset: filemint.ico
 )
 
 if exist "%REPO_ROOT%\assets\icons\filemint.png" (
     copy /Y "%REPO_ROOT%\assets\icons\filemint.png" "%APP_DIR%\filemint.png" >nul
     if exist "%REPO_ROOT%\assets\icons\icon.png" copy /Y "%REPO_ROOT%\assets\icons\icon.png" "%APP_DIR%\icon.png" >nul
-    echo [+] Deployed PNG icon assets.
+    echo [📌] Deployed PNG icon assets.
 ) else if exist "%REPO_ROOT%\icons\filemint.png" (
     copy /Y "%REPO_ROOT%\icons\filemint.png" "%APP_DIR%\filemint.png" >nul
-    echo [+] Deployed PNG icon assets.
+    echo [📌] Deployed PNG icon assets.
 )
 
 :: If no .ico exists but compiled .exe is present, use the executable's embedded icon
@@ -125,7 +138,7 @@ if not defined ICON_FILE (
 )
 
 :: 5. Create Quiet Background Launcher Script
-echo [*] Creating background launcher script...
+echo [⚙️] Creating background launcher script...
 if "!PYTHON_CMD!"=="py" (
     set "LAUNCH_CMD=pyw"
 ) else (
@@ -148,7 +161,7 @@ if exist "%APP_DIR%\FileMint.exe" (
 
 
 :: 6. Register Desktop & Start Menu Shortcuts via Temporary VBScript Helper
-echo [*] Registering Desktop & Start Menu shortcuts...
+echo [⚙️] Registering Desktop and Start Menu shortcuts...
 set "VBS_SCRIPT=%TEMP%\CreateFileMintShortcuts.vbs"
 
 (

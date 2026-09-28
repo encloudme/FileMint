@@ -65,6 +65,7 @@ merged_*
 merge_*
 installers/do_not_delete.txt
 env_details.txt
+test.md
 
 # --- Release Archives Policy ---
 # Ignore temporary local build bundles if attached to GitHub Releases
