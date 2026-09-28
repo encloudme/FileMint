@@ -4,7 +4,6 @@
   <img src="assets/banners/filemint_github_banner.png" alt="FileMint Header Banner" width="1376" />
 
   <br/><br/>
-
   <!-- Badges -->
   <a href="https://github.com"><img src="https://img.shields.io/badge/Version-v15.0-00E5FF?style=flat&logo=github" alt="Version"></a>
   <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat&logo=python&logoColor=white" alt="Python"></a>
@@ -13,9 +12,10 @@
   <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero-brightgreen?style=flat" alt="Zero Dependencies"></a>
 
  <br/><br/>
-  [![Release Link](https://img.shields.io/github/v/release/encloudme/FileMint?label=RELEASE%20LINK&style=flat&logo=github&color=2E7D32)](https://github.com/encloudme/FileMint/releases/latest)
 
-  <h3>⚡ Zero-Dependency Data Sanitization & Codebase Archiving Engine</h3>
+ [![Release Link](https://img.shields.io/github/v/release/encloudme/FileMint?label=RELEASE%20LINK&style=flat&logo=github&color=2E7D32)](https://github.com/encloudme/FileMint/releases/latest)
+
+<h3>⚡ Zero-Dependency Data Sanitization & Codebase Archiving Engine</h3>
   <p>A high-performance desktop utility for offline file consolidation, metadata cleaning, versioning enforcement, and automated archiving.</p>
 
 **[Quick Start](#quick-start)** |
@@ -60,7 +60,7 @@ chmod +x installers/install.sh
 *Creates a system application launcher under **Office / Development** menu with native icon support.*
 
 ---
-# 📸 Visual Showcase & Key Features
+# 📸 Visual Showcase & Key Features             
 
 
 _<a id="synopsis"></a>_
@@ -68,7 +68,6 @@ _<a id="synopsis"></a>_
 > ### 📖 Project Synopsis     👉   _[View / Download Project Synopsis (PDF)](./documentation/FileMint_Project_Synopsis_v2.0.pdf?raw=true)_
 
 ---
-
 <a id="visual-showcase"></a>
 ### 🖼️ Visual Showcase   
 
@@ -168,17 +167,19 @@ _[[Home ⤴︎ ]](#top-header)_
 <a id="downloads-releases"></a>
 ## 📦 Downloads & Releases
 
+
 ---
 ### 🧩 Release (v15.0.2)
 
 | Release Package               | Target System                 | SHA-256 Checksum                                                   |
 |:------------------------------|:------------------------------|:-------------------------------------------------------------------|
-| **`FileMint-v15.0.2`**        | Standalone Linux Binary       | `f2ca78a2933b3ea20baaf25697aa692e6580c3f9838a74abb1e6cf6ff6eb2b36` |
-| **`FileMint-v15.0.2.exe`**    | Standalone Windows Executable | `059066e383d65860a280858584e1e8cb410294cad670415949babaa4b08e53f7` |
-| **`filemint_v15.0.2.zip`**    | Cross-Platform Zip Archive    | `1a996fb625c374b37ca467be0369b9d8d8d29552a94c33949a73f6415b7391c4` |
-| **`filemint_v15.0.2.tar.gz`** | Linux POSIX Package           | `9b39f44eb6963a90699905b0da26bd6b65577078d3ac7ce2d2ae300cbf96b958` |
+| **`FileMint-v15.0.2`**        | Standalone Linux Binary       | `5ccf2ebda83db2cb1ce8347b8a1639ff24e7145c4bbbcb97c7ab6020b8da1d3b` |
+| **`FileMint-v15.0.2.exe`**    | Standalone Windows Executable | `c050fb84051eb11eba1e19b884694f372f1c7f50385ae2e00564c868abdf8939` |
+| **`filemint_v15.0.2.zip`**    | Cross-Platform Zip Archive    | `b79b8b959818959fa61bc4ec8c08d08433301e87019b1eec5775f3d9fa547e02` |
+| **`filemint_v15.0.2.tar.gz`** | Linux POSIX Package           | `c335a4531b986eb22647114377983c9789bd47267aa4a352c84e6a96054ce508` |
 
-**Release Date:** `2026-09-27 02:43:12`
+**Release Date:** `2026-09-28 22:13:02`
+
 
 ---
 
