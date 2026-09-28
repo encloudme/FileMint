@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [v15.0.2] - 2026-09-28 [STABLE]
+
+### ✙ Added
+- **Interactive Binary Reuse**: Added prompt to Step 6 of `build_release.sh` to reuse existing compiled binaries, skipping Nuitka re-compilation to accelerate iteration cycles. (`4e359d2d`)
+- **Windows Executable Staging**: Added explicit staging for Windows binaries (`FileMint.exe` / `FileMint-v15.0.2.exe`) in staging directories for consistent SHA-256 hash calculation across platforms. (`4e359d2d`)
+- **Dynamic Markdown Release Matrix**: Introduced dynamic table generation supporting both archive-only and full artifact distribution layouts with auto-calculated column widths. (`4e359d2d`)
+
+### ️️️🛠️ Fixed
+- **Windows Path Separator Normalisation**: Updated `install-filemint-win.bat` to automatically convert POSIX forward slashes (`/`) to native Windows backslashes (`\`) when seeding `%APPDATA%\FileMint` configuration files. (`d232f52d`)
+- **Linux GNOME Dialog Stacking & Focus**: Fixed modal window focus and z-indexing by setting `topmost` on `AppInfoDialog` and assigning explicit parent window references to path picker dialogs. (`a8b7a454`)
+- **Distribution Zip Archive Stacking**: Fixed an issue where re-running build scripts appended files to existing `.zip` archives by explicitly purging stale archives and staging directories prior to compression. (`10014519`)
+- **Build Log Display Variables**: Fixed incorrect variable reference during logging output for detected Windows executables. (`753121d9`)
+
+### 🔀 Changed
+- **Release Asset Distribution**: Removed tracked release binaries from Git tracking in favor of distributing distribution bundles via GitHub Releases. (`9aa3585b`)
+
+---
+
 ## [v15.0.2] - 2026-09-27
 
 ### ✨ Features & Core Improvements
