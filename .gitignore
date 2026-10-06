@@ -71,3 +71,5 @@ test.md
 # Ignore temporary local build bundles if attached to GitHub Releases
 releases/
 
+# --- URL File ---
+github.com_encloudme_FileMint.txt
